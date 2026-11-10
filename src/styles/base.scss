@@ -1,0 +1,170 @@
+// Probably don't put anything in here
+// Imports
+@use "_variables.scss" as *;
+@use "_mixins.scss" as *;
+
+// Superglobal defaults
+body {
+  font-size: $copy-med;
+  line-height: 1.222;
+  background: $grey50;
+  // overflow-x: clip;
+}
+main {
+  overflow: hidden;
+  a {
+    text-decoration: underline;
+  }
+}
+section {
+  position: relative;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+img,
+iframe {
+  max-width: 100%;
+  vertical-align: middle;
+}
+p {
+  margin: 0 0 1rem 0;
+  &:last-child {
+    margin: 0;
+  }
+}
+a {
+  color: $grey500;
+  transition: color 400ms ease;
+  text-decoration: none;
+  & > * {
+    pointer-events: none;
+  }
+  @include can-hover {
+    &:hover {
+      color: $grey100;
+    }
+  }
+}
+// a[href^="http"] {
+//   display: flex;
+//   align-items: center;
+//   &::after {
+//     background: $grey500;
+//     content: '';
+//     width: 24px;
+//     height: 24px;
+//     display: inline-block;
+//     mask-size: 20px;
+//     mask-repeat: no-repeat;
+//     mask-position: center center;
+//     mask-image: url('../images/external-link.svg');
+//   }
+//   @include can-hover {
+//     &::after {
+//       transition: background 400ms ease;
+//     }
+//     &:hover::after {
+//       background: $grey100;
+//     }
+//   }
+// }
+button {
+  @include can-hover() {
+    cursor: pointer;
+  }
+  &:disabled {
+    cursor: not-allowed;
+  }
+  & > * {
+    pointer-events: none;
+  }
+}
+
+// Headroom
+// .headroom-wrapper {
+//   position: absolute;
+//   width: 100%;
+//   z-index: 9990;
+// }
+// .headroom--unfixed {
+//   display: none;
+// }
+
+// Accordion
+// .AccordionContent {
+// 	overflow: hidden;
+// }
+// .AccordionContent[data-state="open"] {
+// 	animation: slideDown 300ms cubic-bezier(0.87, 0, 0.13, 1);
+// }
+// .AccordionContent[data-state="closed"] {
+// 	animation: slideUp 300ms cubic-bezier(0.87, 0, 0.13, 1);
+// }
+// @keyframes slideDown {
+// 	from {
+// 		height: 0;
+// 	}
+// 	to {
+// 		height: var(--radix-accordion-content-height);
+// 	}
+// }
+// @keyframes slideUp {
+// 	from {
+// 		height: var(--radix-accordion-content-height);
+// 	}
+// 	to {
+// 		height: 0;
+// 	}
+// }
+
+
+// Carousel
+// .carousel__slide-focus-ring {
+//   display: none !important;
+//   outline-width: 0 !important;
+// }
+
+// Osano
+// .osano-cm-widget {
+//   display: none;
+// }
+// .osano-cm-list-item:has([for="osano-cm-drawer-toggle--category_PERSONALIZATION"]),
+// .osano-cm-list-item:has([for="osano-cm-drawer-toggle--category_OPT_OUT"])
+//  {
+//   display: none;
+// }
+
+.embla__viewport {
+  overflow: hidden;
+}
+.embla__container {
+  display: flex;
+  touch-action: pan-y pinch-zoom;
+}
+.embla__slide {
+  flex: 0 0 100%;
+  min-width: 0;
+}
+.embla__prev,
+.embla__next {
+  opacity: 1;
+  transition: opacity 400ms ease;
+}
+.embla__prev:disabled,
+.embla__next:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+.embla__dot {
+  opacity: 0.5;
+  transition: opacity 400ms ease;
+}
+.embla__dot--selected {
+  opacity: 1;
+}

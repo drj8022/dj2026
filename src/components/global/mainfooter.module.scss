@@ -1,0 +1,75 @@
+@use "@/styles/_variables.scss" as *;
+@use "@/styles/_mixins.scss" as *;
+
+.footer {
+  color: $grey50;
+  background-color: $grey300;
+  text-align: center;
+
+  .nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: $spacer-fixed-lrg;
+  }
+
+  a {
+    color: $grey50;
+    text-decoration: underline;
+  }
+  button {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    color: $grey50;
+    background: transparent;
+    @include can-hover {
+      transition: color 400ms ease;
+      &:hover {
+        color: $grey100;
+      }
+    }
+    // font-size: $copy-tny;
+    // @include cta-primary($c1: $grey300, $c2: $grey50, $pad: 6px 15px);
+  }
+
+  @include medium {
+    text-align: left;
+    .nav {
+      justify-content: flex-start;
+    }
+  }
+}
+
+.inner {
+  @include wrap;
+  padding: $spacer-fluid-lrg 0;
+  display: grid;
+  row-gap: $spacer-fixed-gia;
+  @include medium {
+    grid-template-columns: auto auto;
+    row-gap: $spacer-fluid-sml;
+  }
+}
+
+.social {
+  display: flex;
+  justify-content: center;
+  column-gap: $spacer-fixed-lrg;
+  @include medium {
+    justify-content: flex-end;
+  }
+}
+.legal {
+  display: grid;
+  row-gap: $spacer-fixed-tny;
+  font-size: $copy-sml;
+  @include medium {
+    grid-column: 1/-1;
+    grid-template-columns: 1fr auto;
+    & > *:last-child {
+      grid-column: 1/-1;
+      justify-self: flex-end;
+    }
+  }
+}

@@ -1,0 +1,125 @@
+@use "@/styles/_variables.scss" as *;
+@use "@/styles/_mixins.scss" as *;
+
+.primary {
+  position: relative;
+  padding: $spacer-fluid-gia 0;
+
+  .bgimage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    // img {
+    //   object-fit: cover;
+    // }
+  }
+  .inner {
+    @include wrap;
+    // display: grid;
+    // row-gap: $spacer-fluid-tny;
+    // column-gap: $spacer-fluid-sml;
+    text-align: center;
+    // width: clamp(320px, 92vw, 480px);
+    @include medium {
+      text-align: left;
+      // width: clamp(360px, 70vw, 640px);
+      // grid-template-columns: clamp(360px, 40vw, 580px) 1fr;
+    }
+  }
+  // .images {
+  //   // image is conditionally wrapped by animation
+  //   div:has(img) {
+  //     position: relative;
+  //     height: clamp(240px, 40vw, 400px);
+  //   }
+  // }
+  .copy {
+    background: $grey50;
+    padding: $spacer-fluid-med $spacer-fluid-tny;
+    width: clamp(360px, 70vw, 580px);
+    margin: 0 auto;
+    display: grid;
+    column-gap: $spacer-fluid-sml;
+    row-gap: $spacer-fluid-tny;
+    // align-content: center;
+    @include medium {
+      margin-left: 0;
+      padding: $spacer-fluid-med;
+      // text-align: left;
+      // width: clamp(360px, 70vw, 640px);
+      // grid-template-columns: clamp(360px, 40vw, 580px) 1fr;
+    }
+  }
+  .title {
+    font-size: $header-xlg;
+    font-weight: 400;
+    line-height: 1;
+  }
+  .description {
+    p:first-child {
+      font-size: $copy-lrg;
+    }
+  }
+  .cta-group {
+    display: grid;
+    row-gap: $spacer-fluid-tny;
+    a:first-child {
+      @include cta-primary;
+    }
+    & > * {
+      justify-self: center;
+      @include medium {
+        justify-self: flex-start;
+      }
+    }
+  }
+}
+
+.basic {
+  padding: $spacer-fluid-eno 0;
+  color: $grey50;
+  background-color: $grey500;
+  .inner {
+    @include wrap;
+    display: grid;
+    row-gap: $spacer-fluid-tny;
+    column-gap: $spacer-fluid-sml;
+    text-align: center;
+  }
+  // .images {
+  //   // image is conditionally wrapped by animation
+  //   div:has(img) {
+  //     position: relative;
+  //     height: 400px;
+  //   }
+  // }
+  // .copy {
+  //   display: grid;
+  //   column-gap: $spacer-sml;
+  //   row-gap: $spacer-tny;
+  //   align-content: center;
+  // }
+  .title {
+    font-size: $header-gia;
+    font-weight: 400;
+    line-height: 1;
+  }
+  .description {
+    font-size: $copy-gia;
+  }
+  .cta-group {
+    display: grid;
+    row-gap: $spacer-fluid-tny;
+    a {
+      @include cta-primary($grey50, $grey500);
+    }
+    & > * {
+      justify-self: center;
+      @include medium {
+        justify-self: flex-start;
+      }
+    }
+  }
+}

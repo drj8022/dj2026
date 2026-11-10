@@ -1,0 +1,48 @@
+// Animations
+@mixin animation-base($duration: 800ms, $delay: 300ms) {
+  position: relative;
+  transition: clip-path $duration ease, opacity $duration ease, transform $duration ease;
+  transition-delay: calc(var(--i) * #{$delay});
+}
+
+.animation-slide-up {
+  @include animation-base;
+  opacity: 0;
+  transform: translateY(100px);
+  &.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animation-slide-left {
+  @include animation-base(1200ms);
+  opacity: 0;
+  transform: translateX(-50%);
+  &.active {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.animation-slide-right {
+  @include animation-base(1200ms);
+  opacity: 0;
+  transform: translateX(50%);
+  &.active {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.animation-clip-left {
+  @include animation-base;
+  clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+  &.active {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  }
+}
+.animation-clip-right {
+  @include animation-base;
+  clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+  &.active {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  }
+}

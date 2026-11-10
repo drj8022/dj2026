@@ -1,0 +1,144 @@
+@use "@/styles/_variables.scss" as *;
+
+/* Only put super basic stuff in here. */
+/* Like stuff that could apply to any module. */
+
+//== Responsive
+@mixin tiny {
+  @media screen and (min-width: #{$tiny}) {
+    @content;
+  }
+}
+@mixin small {
+  @media screen and (min-width: #{$small}) {
+    @content;
+  }
+}
+@mixin medium {
+  @media screen and (min-width: #{$medium}) {
+    @content;
+  }
+}
+@mixin large {
+  @media screen and (min-width: #{$large}) {
+    @content;
+  }
+}
+@mixin giant {
+  @media screen and (min-width: #{$giant}) {
+    @content;
+  }
+}
+@mixin enormous {
+  @media screen and (min-width: #{$enormous}) {
+    @content;
+  }
+}
+@mixin mobile-only {
+  @media screen and (max-width: #{$medium - 1}) {
+    @content;
+  }
+}
+@mixin tablet-only {
+  @media screen and (max-width: #{$large - 1}) {
+    @content;
+  }
+}
+// if you have a mouse...
+@mixin can-hover {
+  @media screen and (pointer: fine) {
+    @content;
+  }
+}
+// if you have a mouse and a wider screen...
+@mixin main-nav {
+  @media screen and (pointer: fine) and (min-width: #{$large}) {
+    @content;
+  }
+}
+
+//== Container
+@mixin wrap($width: $giant) {
+  position: relative;
+  margin-right: auto;
+  margin-left: auto;
+  width: calc(100% - #{$spacer-fluid-med});
+  max-width: $width;
+}
+
+//== Typography
+// @mixin eyebrow {
+//   letter-spacing: 3px;
+//   text-transform: uppercase;
+//   font-weight: 400;
+//   font-style: italic;
+// }
+
+//== Ctas
+@mixin cta-primary($c1: $grey500, $c2: $grey50, $pad: 10px 35px) {
+  display: flex;
+  align-items: center;
+  padding: $pad;
+  color: $c2;
+  background-color: $c1;
+  border: 2px solid $c1;
+  border-radius: 50px;
+  letter-spacing: 0.025rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  @include external-link($c1, $c2);
+  @include can-hover {
+    transition: color 400ms ease, background-color 400ms ease;
+    &:hover {
+      color: $c1;
+      background-color: $c2;
+      border-color: $c1;
+    }
+  }
+  &.disabled,
+  &:disabled {
+    background-color: $grey50;
+    color: $grey100;
+    &::after {
+      background-color: $grey100;
+    }
+    @include can-hover() {
+      &:hover {
+        background-color: $grey50;
+        color: $grey100;
+        &::after {
+          background-color: $grey100;
+        }
+      }
+    }
+  }
+}
+// @mixin cta-secondary() {}
+@mixin external-link($c1: $grey500, $c2: $grey50) {
+  &[href^="http"] {
+    &::after {
+      background-color: $c2;
+      content: '';
+      width: 24px;
+      height: 24px;
+      display: inline-block;
+      mask-size: 20px;
+      mask-repeat: no-repeat;
+      mask-position: center center;
+      mask-image: url('../images/external-link.svg');
+    }
+    @include can-hover {
+      &::after {
+        transition: background-color 400ms ease;
+      }
+      &:hover::after {
+        background-color: $c1;
+      }
+    }
+  }
+}
+
+//== Accordion (?)
+//== Carousel (?)
+//== Modal (?)
+/* stuff like this should go in the Accordion, Carousel, etc themes */
